@@ -10,7 +10,8 @@ function wrapOutput(output) {
            output + "\n" +
            "module.exports = window.Modernizr;\n" +
            "if (hadGlobal) { window.Modernizr = oldGlobal; }\n" +
-           "else { delete window.Modernizr; }\n" +
+           "else { try { delete window.Modernizr; }\n" +
+             "catch(e) { window['Modernizr'] = undefined; } }\n" +
            "})(window);";
 }
 
